@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import MachineCard from "./components/MachineCard";
 import { getMachines } from "./api/macines";
 import type { Machine } from "./types/machine";
+import MachinePage from "./pages/MachinePage";
 import "./App.css";
 
 function App() {
@@ -36,13 +37,9 @@ function App() {
         <section className="main-title">
           <h1>Laundry Lineup</h1>
         </section>
-        <section className="machine-card-grid">
-          {machines.map((machine) => (
-            <MachineCard key={machine.id} machine={machine} />
-          ))}
-        </section>
+        <MachinePage machines={machines} />
+        <nav className="bottom-nav"></nav>
       </main>
-      <nav className="bottom-nav"></nav>
     </>
   );
 }

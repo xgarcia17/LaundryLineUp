@@ -15,6 +15,7 @@ export default function MachineCard({ machine }: { machine: Machine }) {
       {machine.status === "running" && machine.minutesRemaining !== null && (
         <p>{machine.minutesRemaining} minutes remaining.</p>
       )}
+      <p className="machineDescription">{machine.id}</p>
     </RoundedSquareCard>
   );
 }
