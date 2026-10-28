@@ -1,14 +1,14 @@
 import type { Machine } from "../types/machine";
+import styles from "./MachineCard.module.css";
 import { getStatusInfo, type StatusInfo } from "../utils/machineStatus";
 
 export default function MachineCard({ machine }: { machine: Machine }) {
   const statusInfo: StatusInfo = getStatusInfo(machine.status);
 
   return (
-    <section className="machine-card">
+    <section className={styles.machineCard}>
       <div className="machine-title">
-        <h2>{machine.type}</h2>
-        <h3>{machine.name}</h3>
+        <h2>{machine.name}</h2>
       </div>
       <p style={{ color: statusInfo.color }}>{statusInfo.message}</p>
       {machine.status === "running" && machine.minutesRemaining !== null && (
