@@ -8,25 +8,25 @@ export type StatusInfo = {
 const statusInfo: Record<MachineStatus, StatusInfo> = {
   available: {
     message: "Ready to use",
-    color: "green",
+    color: "var(--status-available)",
   },
   running: {
     message: "Currently running",
-    color: "blue",
+    color: "var(--status-running)",
   },
   finished: {
     message: "Cycle finished",
-    color: "orange",
+    color: "var(--status-finished)",
   },
   offline: {
     message: "Unable to contact machine",
-    color: "gray",
+    color: "var(--status-offline)",
   },
 };
 
 const unknownStatus: StatusInfo = {
   message: "Unknown machine status",
-  color: "gray",
+  color: "var(--status-unknown)",
 };
 
 export function getStatusInfo(status: string): StatusInfo {

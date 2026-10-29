@@ -37,7 +37,6 @@ function App() {
           <h1>Laundry Lineup</h1>
         </section>
         <MachinePage machines={machines} />
-        <nav className="bottom-nav"></nav>
       </main>
     </>
   );
