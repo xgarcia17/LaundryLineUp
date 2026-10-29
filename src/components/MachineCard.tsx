@@ -3,21 +3,27 @@ import RoundedSquareCard from "./RoundedSquareCard";
 import styles from "./MachineCard.module.css";
 import { getStatusInfo, type StatusInfo } from "../utils/machineStatus";
 
-export default function MachineCard({ machine }: { machine: Machine }) {
+type MachineCardProps = {
+  machine: Machine;
+  onSelect: (machine: Machine) => void;
+};
+
+export default function MachineCard({ machine, onSelect }: MachineCardProps) {
   const statusInfo: StatusInfo = getStatusInfo(machine.status);
 
   return (
-    <RoundedSquareCard className={styles.machineCard}>
-      <div className={styles.machineTitle}>
-        <h2>{machine.name}</h2>
-      </div>
-      <p className={styles.statusInfo} style={{ color: statusInfo.color }}>
+    <RoundedSquareCard
+      className={styles.machineCard}
+      onClick={() => onSelect(machine)}
+    >
+      <span className={styles.machineTitle}>{machine.name}</span>
+      <span className={styles.statusInfo} style={{ color: statusInfo.color }}>
         {statusInfo.message}
-      </p>
+      </span>
       {machine.status === "running" && machine.minutesRemaining !== null && (
-        <p>{machine.minutesRemaining} minutes remaining.</p>
+        <span>{machine.minutesRemaining} minutes remaining.</span>
       )}
-      <p className="machineDescription">{machine.id}</p>
+      <span className={styles.machineDescription}>{machine.id}</span>
     </RoundedSquareCard>
   );
 }

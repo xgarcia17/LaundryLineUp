@@ -1,6 +1,6 @@
 import type { Machine } from "../types/machine";
 
-const hardcodedMachines: Machine[] = [
+const mockMachines: Machine[] = [
   {
     id: "1",
     name: "LQ Washer",
@@ -24,5 +24,5 @@ export async function getMachines({
     throw new Error("householdId is required");
   }
 
-  return hardcodedMachines;
+  return mockMachines;
 }

@@ -4,17 +4,24 @@
   gap: 0.5rem;
   padding: 1rem;
   background-color: var(--machine-card-bg);
+  color: var(--text-h);
 }
 
 .machineTitle {
-  h2 {
-    font-size: 20px;
-  }
-  p {
-    font-size: 14px;
-  }
+  display: block;
+  font-size: 20px;
+  font-weight: 500;
 }
 
 .statusInfo {
   font-size: 16px;
+}
+
+.machineDescription {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+  font-size: 14px;
 }
