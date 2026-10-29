@@ -1,4 +1,19 @@
 .machineCard {
+  aspect-ratio: 1 / 0.8;
   align-items: center;
-  padding: 2rem;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+.machineTitle {
+  h2 {
+    font-size: 20px;
+  }
+  p {
+    font-size: 14px;
+  }
+}
+
+.statusInfo {
+  font-size: 16px;
 }

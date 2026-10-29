@@ -8,10 +8,12 @@ export default function MachineCard({ machine }: { machine: Machine }) {
 
   return (
     <RoundedSquareCard className={styles.machineCard}>
-      <div className="machine-title">
+      <div className={styles.machineTitle}>
         <h2>{machine.name}</h2>
       </div>
-      <p style={{ color: statusInfo.color }}>{statusInfo.message}</p>
+      <p className={styles.statusInfo} style={{ color: statusInfo.color }}>
+        {statusInfo.message}
+      </p>
       {machine.status === "running" && machine.minutesRemaining !== null && (
         <p>{machine.minutesRemaining} minutes remaining.</p>
       )}

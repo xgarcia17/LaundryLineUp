@@ -3,20 +3,26 @@ import type { Machine } from "../types/machine";
 const hardcodedMachines: Machine[] = [
   {
     id: "1",
-    type: "washer",
     name: "LQ Washer",
     status: "running",
     minutesRemaining: 25,
   },
   {
     id: "2",
-    type: "dryer",
     name: "LG Dry Master",
     status: "available",
     minutesRemaining: null,
   },
 ];
 
-export async function getMachines(householdId: string): Promise<Machine[]> {
+export async function getMachines({
+  householdId,
+}: {
+  householdId: string;
+}): Promise<Machine[]> {
+  if (!householdId) {
+    throw new Error("householdId is required");
+  }
+
   return hardcodedMachines;
 }

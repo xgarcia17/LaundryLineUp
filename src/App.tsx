@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import MachineCard from "./components/MachineCard";
 import { getMachines } from "./api/macines";
 import type { Machine } from "./types/machine";
 import MachinePage from "./pages/MachinePage";
@@ -13,7 +12,7 @@ function App() {
   const householdId = "0";
 
   useEffect(() => {
-    getMachines(householdId)
+    getMachines({ householdId })
       .then(setMachines)
       .catch(() => {
         setError("Could not resolve machine status.");
