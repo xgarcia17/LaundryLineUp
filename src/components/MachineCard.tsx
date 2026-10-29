@@ -1,11 +1,11 @@
-import type { Machine } from "../types/machine";
+import type { MachineWithQueue } from "../types/machine";
 import RoundedSquareCard from "./RoundedSquareCard";
 import styles from "./MachineCard.module.css";
 import { getStatusInfo, type StatusInfo } from "../utils/machineStatus";
 
 type MachineCardProps = {
-  machine: Machine;
-  onSelect: (machine: Machine) => void;
+  machine: MachineWithQueue;
+  onSelect: (machine: MachineWithQueue) => void;
 };
 
 export default function MachineCard({ machine, onSelect }: MachineCardProps) {
@@ -23,7 +23,13 @@ export default function MachineCard({ machine, onSelect }: MachineCardProps) {
       {machine.status === "running" && machine.minutesRemaining !== null && (
         <span>{machine.minutesRemaining} minutes remaining.</span>
       )}
-      <span className={styles.machineDescription}>{machine.id}</span>
+      <span className={styles.machineQueueSummary}>
+        {machine.queue.currentUserPosition === 1
+          ? "You're next!"
+          : machine.queue.currentUserPosition !== null
+            ? `${machine.queue.totalWaitingCount} waiting · Your position: ${machine.queue.currentUserPosition}`
+            : `${machine.queue.totalWaitingCount} waiting`}
+      </span>
     </RoundedSquareCard>
   );
 }

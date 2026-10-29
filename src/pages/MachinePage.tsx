@@ -1,10 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import MachineCard from "../components/MachineCard";
-import type { Machine } from "../types/machine";
+import type { MachineWithQueue } from "../types/machine";
 import styles from "./MachinePage.module.css";
 
-export default function MachinePage({ machines }: { machines: Machine[] }) {
-  const [selectedMachine, setSelectedMachine] = useState<Machine | null>(null);
+type MachinePageProps = {
+  machines: MachineWithQueue[];
+};
+
+export default function MachinePage({ machines }: MachinePageProps) {
+  const [selectedMachine, setSelectedMachine] =
+    useState<MachineWithQueue | null>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {

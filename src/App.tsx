@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { getMachines } from "./api/macines";
-import type { Machine } from "./types/machine";
+import { getMachines } from "./api/machines";
+import type { MachineWithQueue } from "./types/machine";
 import MachinePage from "./pages/MachinePage";
 import "./App.css";
 
 function App() {
-  const [machines, setMachines] = useState<Machine[]>([]);
+  const [machines, setMachines] = useState<MachineWithQueue[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
