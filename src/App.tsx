@@ -1,29 +1,43 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getMachines } from "./api/machines";
+import type { MachineWithQueue } from "./types/machine";
+import MachinePage from "./pages/MachinePage";
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [machines, setMachines] = useState<MachineWithQueue[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const householdId = "0";
+
+  useEffect(() => {
+    getMachines({ householdId })
+      .then(setMachines)
+      .catch(() => {
+        setError("Could not resolve machine status.");
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) {
+    return <p>Loading your machine data...</p>;
+  }
+
+  if (error) {
+    return <p>{error}</p>;
+  }
 
   return (
     <>
-      <section id="center">
-        <div>
-          <h1>Hello!</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
+      <main className="app-shell">
+        <section className="main-title">
+          <h1>Laundry Lineup</h1>
+        </section>
+        <MachinePage machines={machines} />
+      </main>
     </>
   );
 }

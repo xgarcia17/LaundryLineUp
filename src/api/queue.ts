@@ -16,7 +16,7 @@ const mockQueue: QueueEntry[] = [
     machineId: "1",
     userId: "mock-user-2",
     userDisplayName: "Mock User 2",
-    position: 1,
+    position: 2,
     status: "waiting",
     joinedAt: new Date().toISOString(),
     notifiedAt: null,
@@ -41,5 +41,5 @@ export async function addUserToQueueForMachine(
 export async function getQueueForMachine(
   machineId: string,
 ): Promise<QueueEntry[]> {
-  return mockQueue;
+  return mockQueue.filter((entry) => entry.machineId === machineId);
 }

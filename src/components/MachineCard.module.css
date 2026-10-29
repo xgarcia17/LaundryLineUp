@@ -1,0 +1,27 @@
+.machineCard {
+  aspect-ratio: 1 / 0.8;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background-color: var(--machine-card-bg);
+  color: var(--text-h);
+}
+
+.machineTitle {
+  display: block;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.statusInfo {
+  font-size: 16px;
+}
+
+.machineQueueSummary {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+  font-size: 14px;
+}

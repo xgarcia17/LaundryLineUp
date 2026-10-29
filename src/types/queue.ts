@@ -15,3 +15,8 @@ export type QueueEntry = {
   joinedAt: string;
   notifiedAt: string | null;
 };
+
+export type QueueSummary = {
+  totalWaitingCount: number;
+  currentUserPosition: number | null;
+};
